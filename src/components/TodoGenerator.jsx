@@ -5,6 +5,10 @@ import { useContext } from "react"
 const TodoGenerator = () => {
     const [text, setText] = useState("")
     const {dispatch} = useContext(TodoContext)
+
+    const TodoGeneratorStyle = {
+        margin: '5px'
+    }
     
     const handleInput = (event) =>{
         setText(event.target.value)
@@ -20,7 +24,7 @@ const TodoGenerator = () => {
 
     return (
         <div>
-            <input type="text" value={text} onChange={handleInput}/>
+            <input type="text" value={text} onChange={handleInput} style={TodoGeneratorStyle}/>
             <button onClick={handleAddTodoItem}>Add</button>
         </div>
     )
