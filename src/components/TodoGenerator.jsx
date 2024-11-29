@@ -24,7 +24,7 @@ const TodoGenerator = () => {
 
     return (
         <div>
-            <input type="text" value={text} onChange={handleInput} style={TodoGeneratorStyle}/>
+            <input type="text" maxLength={100} value={text} onChange={handleInput} style={TodoGeneratorStyle}/>
             <button onClick={handleAddTodoItem}>Add</button>
         </div>
     )
