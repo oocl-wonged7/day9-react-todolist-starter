@@ -1,14 +1,16 @@
 import { createContext, useReducer } from "react";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Link,
+} from "react-router-dom";
 import "./App.css";
+import DoneList from "./components/DoneList";
+import NotFoundPage from "./components/NotFoundPage";
 import TodoList from "./components/TodoList";
 import { todoReducer } from "./context/todoReducer";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
-import NotFoundPage from "./components/NotFoundPage";
 
 export const TodoContext = createContext();
 
@@ -19,9 +21,13 @@ function App() {
     <div className="App">
       <TodoContext.Provider value={{ state, dispatch }}>
         <Router>
+          <nav>
+            <Link to={"/"}>Home</Link> | <Link to={"/doneList"}>Done</Link>
+          </nav>
           <Routes>
-            <Route path={"/"} element={<Navigate to={<TodoList />} />} />
-            <Route path={"/todo-list"} element={<TodoList />} />
+            <Route path={"/"} element={<Navigate to="/todoList" />} />
+            <Route path={"/todoList"} element={<TodoList />} />
+            <Route path={"/doneList"} element={<DoneList />} />
             <Route path={"*"} element={<NotFoundPage />} />
           </Routes>
         </Router>
