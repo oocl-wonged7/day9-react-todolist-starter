@@ -1,14 +1,15 @@
 import React, {useContext} from 'react'
 import {TodoContext} from '../App'
+import { ACTION } from '../context/todoReducer'
 
 const TodoItem = ({todoItem}) =>{
     const {dispatch} = useContext(TodoContext) 
     const handleDeleteTodoItem = () =>{
-        dispatch({type: "DELETE_TODO", payload: todoItem.id})
+        dispatch({type: ACTION.DELETE_TODO, payload: todoItem.id})
     }
 
     const handleToggleTodoItem = () =>{
-        dispatch({type: "TOGGLE_TODO", payload: todoItem.id})
+        dispatch({type: ACTION.TOGGLE_TODO, payload: todoItem.id})
     }
 
     const TodoItemStyle = {

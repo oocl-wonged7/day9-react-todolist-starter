@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { TodoContext } from "../App"
 import { useContext } from "react"
+import { ACTION } from "../context/todoReducer"
 
 const TodoGenerator = () => {
     const [text, setText] = useState("")
@@ -19,7 +20,7 @@ const TodoGenerator = () => {
             return
         }
         setText("")
-        dispatch({type: "ADD_TODO", payload: text})
+        dispatch({type: ACTION.ADD_TODO, payload: text})
     }
 
     return (
