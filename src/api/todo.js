@@ -17,3 +17,9 @@ export const addTodoItem = async (todoItemText) =>{
     })
     return response.data;
 }
+
+export const deleteTodoItem = async (todoItemId) =>{
+    const response = await instance.delete(`/todoItems/${todoItemId}`)
+    console.log(response.data)
+    return response.data;
+}

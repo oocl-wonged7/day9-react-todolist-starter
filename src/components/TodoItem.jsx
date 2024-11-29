@@ -1,11 +1,14 @@
 import React, {useContext} from 'react'
 import {TodoContext} from '../App'
 import { ACTION } from '../context/todoReducer'
+import { deleteTodoItem } from '../api/todo'
 
 const TodoItem = ({todoItem}) =>{
     const {dispatch} = useContext(TodoContext) 
     const handleDeleteTodoItem = () =>{
-        dispatch({type: ACTION.DELETE_TODO, payload: todoItem.id})
+        deleteTodoItem(todoItem.id).then((deletedTodoItem)=>{
+            dispatch({type: ACTION.DELETE_TODO, payload: deletedTodoItem.id})
+        })
     }
 
     const handleToggleTodoItem = () =>{
@@ -29,8 +32,8 @@ const TodoItem = ({todoItem}) =>{
     }
 
     return(
-        <div onClick={handleToggleTodoItem} style={todoItemWrapperStype}>
-            <div style={TodoItemStyle}>{todoItem.text}</div>
+        <div style={todoItemWrapperStype}>
+            <div onClick={handleToggleTodoItem} style={TodoItemStyle}>{todoItem.text}</div>
         <button onClick={handleDeleteTodoItem}>X</button>
         </div>
     )

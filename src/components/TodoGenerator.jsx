@@ -20,10 +20,10 @@ const TodoGenerator = () => {
         if (text.trim() === "") {
             return
         }
-        setText("")
-        addTodoItem().then((todoItem)=>{
+        addTodoItem(text).then((todoItem)=>{
             dispatch({type: ACTION.ADD_TODO, payload: todoItem.text})
         })
+        setText("")
     }
 
     return (
