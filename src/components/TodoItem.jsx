@@ -1,9 +1,7 @@
 import React, {useContext} from 'react'
 import {TodoContext} from '../App'
-import { hover } from '@testing-library/user-event/dist/hover'
 
-const TodoItem = (props) =>{
-    const {todoItem} = props
+const TodoItem = ({todoItem}) =>{
     const {dispatch} = useContext(TodoContext) 
     const handleDeleteTodoItem = () =>{
         dispatch({type: "DELETE_TODO", payload: todoItem.id})
@@ -19,6 +17,7 @@ const TodoItem = (props) =>{
         padding: '5px',
         textDecoration:todoItem.done?"line-through":"none",
         margin: '5px',
+        cursor: 'pointer',
     }
 
     const todoItemWrapperStype = {
