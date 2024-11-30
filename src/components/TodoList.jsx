@@ -52,6 +52,7 @@ const TodoList = () => {
         onChange={HandlePageChange}
         defaultCurrent={1}
         total={state.length}
+        style={{ display: "flex", justifyContent: "center", margin: "5px" }}
       />
     </div>
   );

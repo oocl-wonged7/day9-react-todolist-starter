@@ -3,6 +3,7 @@ export const ACTION = {
   ADD_TODO: "ADD_TODO",
   TOGGLE_TODO: "TOGGLE_TODO",
   DELETE_TODO: "DELETE_TODO",
+  UPDATE_TODO: "UPDATE_TODO",
 };
 
 export const todoReducer = (state, action) => {
@@ -20,6 +21,13 @@ export const todoReducer = (state, action) => {
       });
     case ACTION.DELETE_TODO:
       return state.filter((todoItem) => todoItem.id !== action.payload);
+    case ACTION.UPDATE_TODO:
+      return state.map((todoItem) => {
+        if (todoItem.id === action.payload.id) {
+          return { ...todoItem, text: action.payload.text};
+        }
+        return todoItem;
+      });
     default:
       return state;
   }

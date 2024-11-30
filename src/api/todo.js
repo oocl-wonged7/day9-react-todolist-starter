@@ -30,3 +30,10 @@ export const toggleTodoItem = async (todoItemId, todoItemDone) => {
   });
   return response.data;
 };
+
+export const updateTodoItem = async (todoItemId, todoItemText) => {
+  const response = await instance.put(`/todoItems/${todoItemId}`, {
+    text: todoItemText,
+  });
+  return response.data;
+};
