@@ -11,11 +11,18 @@ export const todoReducer = (state, action) => {
     case ACTION.INIT_TODO:
       return action.payload;
     case ACTION.ADD_TODO:
-      return [...state, { id: Date.now(), text: action.payload, done: false }];
+      return [
+        ...state,
+        {
+          id: action.payload.id,
+          text: action.payload.text,
+          done: action.payload.done,
+        },
+      ];
     case ACTION.TOGGLE_TODO:
       return state.map((todoItem) => {
-        if (todoItem.id === action.payload) {
-          return { ...todoItem, done: !todoItem.done };
+        if (todoItem.id === action.payload.id) {
+          return { ...todoItem, done: action.payload.done };
         }
         return todoItem;
       });
@@ -24,7 +31,7 @@ export const todoReducer = (state, action) => {
     case ACTION.UPDATE_TODO:
       return state.map((todoItem) => {
         if (todoItem.id === action.payload.id) {
-          return { ...todoItem, text: action.payload.text};
+          return { ...todoItem, text: action.payload.text };
         }
         return todoItem;
       });

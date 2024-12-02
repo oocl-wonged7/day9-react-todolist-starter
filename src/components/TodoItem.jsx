@@ -1,10 +1,8 @@
+import { Button } from "antd";
 import React, { useContext, useState } from "react";
-import { deleteTodoItem, toggleTodoItem } from "../api/todo";
+import { deleteTodoItem, updateTodoItem } from "../api/todo";
 import { TodoContext } from "../App";
 import { ACTION } from "../context/todoReducer";
-import { Button, Modal } from 'antd';
-import Item from "antd/es/list/Item";
-import { updateTodoItem } from "../api/todo";
 import EditModel from "./EditModel";
 
 const TodoItem = ({ todoItem }) => {
@@ -22,10 +20,13 @@ const TodoItem = ({ todoItem }) => {
   };
 
   const handleToggleTodoItem = () => {
-    toggleTodoItem(todoItem.id, todoItem.done).then((toggledTodoItem) => {
-      console.log(toggledTodoItem);
-      dispatch({ type: ACTION.TOGGLE_TODO, payload: toggledTodoItem.id });
-    });
+    console.log(todoItem.id, todoItem.text, todoItem.done)
+    updateTodoItem(todoItem.id, todoItem.text, !todoItem.done).then(
+      (toggledTodoItem) => {
+        console.log(toggledTodoItem.done);
+        dispatch({ type: ACTION.TOGGLE_TODO, payload: toggledTodoItem});
+      }
+    );
   };
 
   const TodoItemStyle = {
@@ -50,7 +51,11 @@ const TodoItem = ({ todoItem }) => {
         {todoItem.text}
       </div>
       <Button onClick={showModal}>Edit</Button>
-      <EditModel open={isModalOpen} todoItem={todoItem} setIsModalOpen={setIsModalOpen}/>
+      <EditModel
+        open={isModalOpen}
+        todoItem={todoItem}
+        setIsModalOpen={setIsModalOpen}
+      />
       <button onClick={handleDeleteTodoItem}>X</button>
     </div>
   );

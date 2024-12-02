@@ -8,7 +8,6 @@ export const getTodoItems = async () => {
 export const addTodoItem = async (todoItemText) => {
   const response = await instance.post("/todoItems", {
     text: todoItemText,
-    done: false,
   });
   return response.data;
 };
@@ -19,16 +18,11 @@ export const deleteTodoItem = async (todoItemId) => {
   return response.data;
 };
 
-export const toggleTodoItem = async (todoItemId, todoItemDone) => {
-  const response = await instance.put(`/todoItems/${todoItemId}`, {
-    done: !todoItemDone,
-  });
-  return response.data;
-};
-
-export const updateTodoItem = async (todoItemId, todoItemText) => {
+export const updateTodoItem = async (todoItemId, todoItemText, todoItemDone) => {
+  console.log({todoItemId}, {todoItemText}, {todoItemDone})
   const response = await instance.put(`/todoItems/${todoItemId}`, {
     text: todoItemText,
+    done: todoItemDone,
   });
   return response.data;
 };

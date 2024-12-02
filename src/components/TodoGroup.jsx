@@ -16,8 +16,8 @@ const TodoGroup = (props) => {
         <div>Add the things you need to do today...</div>
       ) : (
         <div>
-          {currentTodos.map((todoItem, index) => {
-            return <TodoItem todoItem={todoItem} key={todoItem.id + index} />;
+          {currentTodos.map((todoItem, _) => {
+            return <TodoItem todoItem={todoItem} key={todoItem.id} />;
           })}
         </div>
       )}

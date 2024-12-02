@@ -20,7 +20,7 @@ const TodoGenerator = () => {
       return;
     }
     addTodoItem(text).then((todoItem) => {
-      dispatch({ type: ACTION.ADD_TODO, payload: todoItem.text });
+      dispatch({ type: ACTION.ADD_TODO, payload: todoItem });
     });
     setText("");
   };

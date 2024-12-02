@@ -13,7 +13,7 @@ const EditModel = (props) => {
 
     const handleOk = () => {
         setIsUpdating(true);
-        updateTodoItem(todoItem.id, text).then((updatedTodoItem) => {
+        updateTodoItem(todoItem.id, text, todoItem.done).then((updatedTodoItem) => {
           dispatch({ type: ACTION.UPDATE_TODO, payload: updatedTodoItem });
         }).finally(() => {
           setIsUpdating(false);
