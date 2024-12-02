@@ -14,12 +14,10 @@ export const addTodoItem = async (todoItemText) => {
 
 export const deleteTodoItem = async (todoItemId) => {
   const response = await instance.delete(`/todoItems/${todoItemId}`);
-  console.log(response.data);
   return response.data;
 };
 
 export const updateTodoItem = async (todoItemId, todoItemText, todoItemDone) => {
-  console.log({todoItemId}, {todoItemText}, {todoItemDone})
   const response = await instance.put(`/todoItems/${todoItemId}`, {
     text: todoItemText,
     done: todoItemDone,

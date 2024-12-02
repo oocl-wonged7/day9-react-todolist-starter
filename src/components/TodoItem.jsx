@@ -20,11 +20,9 @@ const TodoItem = ({ todoItem }) => {
   };
 
   const handleToggleTodoItem = () => {
-    console.log(todoItem.id, todoItem.text, todoItem.done)
     updateTodoItem(todoItem.id, todoItem.text, !todoItem.done).then(
       (toggledTodoItem) => {
-        console.log(toggledTodoItem.done);
-        dispatch({ type: ACTION.TOGGLE_TODO, payload: toggledTodoItem});
+        dispatch({ type: ACTION.TOGGLE_TODO, payload: toggledTodoItem });
       }
     );
   };
