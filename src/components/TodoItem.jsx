@@ -14,8 +14,8 @@ const TodoItem = ({ todoItem }) => {
   };
 
   const handleDeleteTodoItem = () => {
-    deleteTodoItem(todoItem.id).then((deletedTodoItem) => {
-      dispatch({ type: ACTION.DELETE_TODO, payload: deletedTodoItem.id });
+    deleteTodoItem(todoItem.id).then(() => {
+      dispatch({ type: ACTION.DELETE_TODO, payload: todoItem.id});
     });
   };
 
