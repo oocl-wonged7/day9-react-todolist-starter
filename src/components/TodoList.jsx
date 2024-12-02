@@ -44,7 +44,7 @@ const TodoList = () => {
     />
   ) : (
     <div>
-      This is the TodoList Component.
+      TodoList
       <TodoGroup currentPage={currentPage} pageSize={pageSize}/>
       <TodoGenerator />
       <Pagination
