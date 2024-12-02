@@ -17,11 +17,15 @@ instance.interceptors.response.use((response) => {
     console.log("Response Interceptor", response);
     var duration = new Date() - response.config.metadata.timeStart
     console.log(`url: ${response.config.url} method: ${response.config.method} duration:${duration}`)
+    // console.log("Request duration", config.metadata.timeEnd - config.metadata.timeStart);
     return response;
 }, (error) => {
     if (error.response && error.response.status === 404){
         window.location.href = "/notFoundPage"
+    }else if(error.response && error.response.status === 500){
+        window.location.href = "/hardStop"
     }
+    // console.log("Response Interceptor Error", error);
     return Promise.reject(error);
 });
 

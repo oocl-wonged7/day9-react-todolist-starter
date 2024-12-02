@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import DoneList from "./components/DoneList";
+import HardStop from "./components/HardStop";
 import HelpPage from "./components/HelpPage";
 import NotFoundPage from "./components/NotFoundPage";
 import TodoList from "./components/TodoList";
@@ -31,6 +32,7 @@ function App() {
             <Route path={"/todoList"} element={<TodoList />} />
             <Route path={"/doneList"} element={<DoneList />} />
             <Route path={"/helpPage"} element={<HelpPage />} />
+            <Route path={"/hardStop"} element={<HardStop />} />
             <Route path={"*"} element={<NotFoundPage />} />
           </Routes>
         </Router>
